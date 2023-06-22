@@ -1,21 +1,47 @@
+; ; Retrieve the screen size
+; ScreenWidth := A_ScreenWidth
+; ScreenHeight := A_ScreenHeight
+
+; ; Display the screen size
+; MsgBox, Screen Width: %ScreenWidth%`nScreen Height: %ScreenHeight%
+
+
 ^!L::
-Sleep,1000
-CoordMode, Mouse, Screen
-Click, 1210, 110
-Sleep,1000
-Click, 1210, 580
-Sleep,1000
-; LIGHT MODE
-Click, 1210, 335
+    windowTitle := "YouTube - Google Chrome"
+    WinGetPos, windowX, windowY, windowWidth, windowHeight, %windowTitle%
+
+    CoordMode, Mouse, Screen
+
+    Sleep, 1000
+    X := windowX + windowWidth - 70
+    Y := windowY + 110
+    Click, %X%, %Y%
+
+    Sleep, 1000
+    Y := Y + 470
+    Click, %X%, %Y%
+
+    Sleep, 1000
+    Y := Y - 245
+    Click, %X%, %Y%
 return
 
 ^!D::
-Sleep,1000
-CoordMode, Mouse, Screen
-Click, 1210, 110
-Sleep,1000
-Click, 1210, 580
-Sleep,1000
-; DARK MODE
-Click, 1210, 290
+    windowTitle := "YouTube - Google Chrome"
+    WinGetPos, windowX, windowY, windowWidth, windowHeight, %windowTitle%
+
+    CoordMode, Mouse, Screen
+
+    Sleep, 1000
+    X := windowX + windowWidth - 70
+    Y := windowY + 110
+    Click, %X%, %Y%
+
+    Sleep, 1000
+    Y := Y + 470
+    Click, %X%, %Y%
+
+    Sleep, 1000
+    Y := Y - 290
+    Click, %X%, %Y%
 return
