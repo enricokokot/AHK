@@ -7,41 +7,67 @@
 
 
 ^!L::
-    windowTitle := "YouTube - Google Chrome"
-    WinGetPos, windowX, windowY, windowWidth, windowHeight, %windowTitle%
+    endingString := "YouTube - Google Chrome"
+    WinGet, windowList, List
 
-    CoordMode, Mouse, Screen
-
-    Sleep, 1000
-    X := windowX + windowWidth - 70
-    Y := windowY + 110
-    Click, %X%, %Y%
-
-    Sleep, 1000
-    Y := Y + 470
-    Click, %X%, %Y%
-
-    Sleep, 1000
-    Y := Y - 245
-    Click, %X%, %Y%
+    Loop, %windowList%
+    {
+        windowID := windowList%A_Index%
+        WinGetTitle, windowTitle, ahk_id %windowID%
+        if (StrEnd(windowTitle, endingString))
+        {
+            WinGetPos, windowX, windowY, windowWidth, windowHeight, ahk_id %windowID%
+            CoordMode, Mouse, Screen
+        
+            Sleep, 1000
+            X := windowX + windowWidth - 70
+            Y := windowY + 110
+            Click, %X%, %Y%
+        
+            Sleep, 1000
+            Y := Y + 470
+            Click, %X%, %Y%
+        
+            Sleep, 1000
+            Y := Y - 245
+            Click, %X%, %Y%
+            break
+        }
+    }
 return
 
 ^!D::
-    windowTitle := "YouTube - Google Chrome"
-    WinGetPos, windowX, windowY, windowWidth, windowHeight, %windowTitle%
+    endingString := "YouTube - Google Chrome"
+    WinGet, windowList, List
 
-    CoordMode, Mouse, Screen
-
-    Sleep, 1000
-    X := windowX + windowWidth - 70
-    Y := windowY + 110
-    Click, %X%, %Y%
-
-    Sleep, 1000
-    Y := Y + 470
-    Click, %X%, %Y%
-
-    Sleep, 1000
-    Y := Y - 290
-    Click, %X%, %Y%
+    Loop, %windowList%
+    {
+        windowID := windowList%A_Index%
+        WinGetTitle, windowTitle, ahk_id %windowID%
+        if (StrEnd(windowTitle, endingString))
+        {
+            WinGetPos, windowX, windowY, windowWidth, windowHeight, ahk_id %windowID%
+            CoordMode, Mouse, Screen
+        
+            Sleep, 1000
+            X := windowX + windowWidth - 70
+            Y := windowY + 110
+            Click, %X%, %Y%
+        
+            Sleep, 1000
+            Y := Y + 470
+            Click, %X%, %Y%
+        
+            Sleep, 1000
+            Y := Y - 290
+            Click, %X%, %Y%
+            break
+        }
+    }
 return
+
+; Function to check if a string ends with another string
+StrEnd(str, substr)
+{
+    return SubStr(str, StrLen(str) - StrLen(substr) + 1) = substr
+}
