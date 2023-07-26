@@ -34,6 +34,10 @@
             break
         }
     }
+
+    FileReadLine, lightenScriptLocation, .env, 1
+    Run, python.exe %lightenScriptLocation%
+
 return
 
 ^!D::
@@ -64,6 +68,10 @@ return
             break
         }
     }
+
+    FileReadLine, darkenScriptLocation, .env, 2
+    Run, python.exe %darkenScriptLocation%
+
 return
 
 ; Function to check if a string ends with another string
